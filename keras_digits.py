@@ -28,16 +28,16 @@ test_x = test_x.reshape(10000,784)
 train_y = keras.utils.to_categorical(train_y,10)
 test_y = keras.utils.to_categorical(test_y,10)
 
-#Defining the model
+#Defining the architecture of the neural network model
 model = Sequential() #using keras model API
 model.add(Dense(units=128,activation="relu",input_shape=(784,))) #relu classifier is max(0,Z) where Z is the component
 model.add(Dense(units=128,activation="relu"))
 model.add(Dense(units=128,activation="relu"))
 model.add(Dense(units=10,activation="softmax"))#softmax classifer/activation,aka sigmoid function, is 1 / (1 + (e^-z)) where z is component
 
-#Specifying the training components
+#Specifying the training components, cost function and optimizers
 model.compile(optimizer=SGD(0.01),loss="categorical_crossentropy",metrics=["accuracy"])
-#Fit the model
+#Fit the model and training it
 model.fit(train_x,train_y,batch_size=32,epochs=10,shuffle=True,verbose
 =1)
 
