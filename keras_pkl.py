@@ -71,6 +71,13 @@ print("Accuracy: ",accuracy[1])
 
 #checking a random image to see the result
 z=random.randint(1,100)
+def visualise_digits(arr_x,z):
+    import matplotlib.cm as cm
+    import matplotlib.pyplot as plt
+    print(z,"th image")
+    plt.imshow(arr_x[z].reshape((28,28)),cmap=cm.Greys_r)
+    plt.show()
+visualise_digits(test_x,z)
 img_class = model.predict_classes(test_x) 
 classname = img_class[z] 
 print("Class: ",classname)
